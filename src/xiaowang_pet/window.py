@@ -4,7 +4,7 @@ import random
 import time
 
 from PySide6.QtCore import QPoint, Qt, QTimer
-from PySide6.QtGui import QAction, QColor, QFont, QPainter, QPen, QPixmap, QTransform
+from PySide6.QtGui import QAction, QColor, QCursor, QFont, QPainter, QPen, QPixmap, QTransform
 from PySide6.QtWidgets import QApplication, QLabel, QMenu, QWidget
 
 from .animations import SequencePlayer
@@ -109,6 +109,7 @@ class PetWindow(QWidget):
         self.setWindowFlags(flags)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
         self.setWindowTitle("Xiaowang")
+        self.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
 
         self.bubble_height = 48
         self.setFixedSize(self.config.pet_size, self.config.pet_size + self.bubble_height)
@@ -116,10 +117,12 @@ class PetWindow(QWidget):
         self.pet_label = QLabel(self)
         self.pet_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.pet_label.setGeometry(0, self.bubble_height, self.config.pet_size, self.config.pet_size)
+        self.pet_label.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents, True)
 
         self.emote_label = QLabel(self)
         self.emote_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.emote_label.setGeometry(self.config.pet_size // 2 - 34, 4, 68, 40)
+        self.emote_label.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents, True)
         self.emote_label.setStyleSheet(
             "background: rgba(255, 255, 255, 225);"
             "border: 1px solid rgba(47, 111, 174, 180);"
@@ -213,6 +216,7 @@ class PetWindow(QWidget):
             self._press_global = event.globalPosition().toPoint()
             self._drag_offset = self._press_global - self.frameGeometry().topLeft()
             self._dragging = False
+            self.setCursor(QCursor(Qt.CursorShape.ClosedHandCursor))
             event.accept()
             return
 
@@ -226,6 +230,7 @@ class PetWindow(QWidget):
         global_pos = event.globalPosition().toPoint()
         moved = (global_pos - self._press_global).manhattanLength()
         if moved < 4 and not self._dragging:
+            event.accept()
             return
 
         if not self._dragging:
@@ -252,6 +257,7 @@ class PetWindow(QWidget):
 
         self._press_global = None
         self._dragging = False
+        self.setCursor(QCursor(Qt.CursorShape.OpenHandCursor))
         event.accept()
 
     def mouseDoubleClickEvent(self, event) -> None:  # noqa: N802
