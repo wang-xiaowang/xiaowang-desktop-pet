@@ -45,13 +45,15 @@ xiaowang_desktop_pet/
 - Python 3.10+
 - PySide6
 
+注意：请使用普通 CPython，不要用带 `t` 的 free-threading 实验版（例如 `3.13t`）。PySide6 的 Windows 轮子目前不匹配 `cp313t/abi3t`，会出现 `No matching distribution found for PySide6`。
+
 我检查了当前 Codex 自带 Python：还没有 PySide6。所以现在只做了框架和非 GUI 测试，没有启动桌宠窗口。
 
 安装和运行：
 
 ```powershell
 cd C:\Users\xiaowang\Documents\Codex\2026-06-24\new-chat\outputs\桌宠-小旺
-py -m venv .venv
+py -3.13 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -e .
 python -m xiaowang_pet
