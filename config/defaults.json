@@ -1,6 +1,7 @@
 {
   "initial_anchor": "bottom_right",
   "temp_quit_key": "Esc",
+  "enable_emotes": false,
   "pet_size": 180,
   "timing": {
     "frame_ms": 420,

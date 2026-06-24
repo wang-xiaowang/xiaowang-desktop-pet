@@ -179,6 +179,10 @@ class PetWindow(QWidget):
 
     def _on_single_click_confirmed(self) -> None:
         self.brain.handle_single_click(now_ms())
+        if not self.config.enable_emotes:
+            self.emote_label.hide()
+            return
+
         name = choose_emote(self.brain.state, self.config, self.rng)
         self.emote_label.setText(emote_text(name))
         self.emote_label.show()

@@ -33,6 +33,7 @@ class MovementConfig:
 class AppConfig:
     initial_anchor: str = "bottom_right"
     temp_quit_key: str = "Esc"
+    enable_emotes: bool = False
     pet_size: int = 180
     asset_dir: Path = DEFAULT_ASSET_DIR
     timing: TimingConfig = field(default_factory=TimingConfig)
@@ -59,6 +60,7 @@ def load_config(path: str | Path | None = None) -> AppConfig:
     return AppConfig(
         initial_anchor=data.get("initial_anchor", AppConfig.initial_anchor),
         temp_quit_key=data.get("temp_quit_key", AppConfig.temp_quit_key),
+        enable_emotes=bool(data.get("enable_emotes", AppConfig.enable_emotes)),
         pet_size=int(data.get("pet_size", AppConfig.pet_size)),
         asset_dir=asset_dir,
         timing=TimingConfig(**timing),

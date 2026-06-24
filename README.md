@@ -13,7 +13,7 @@ Windows + Python + PySide6 desktop pet scaffold based on `小旺桌宠-决策汇
 - 拖动全局打断：任意状态拖动切 `drag`，松手回原状态
 - 长时间无互动后，端坐状态低频触发 `walk`
 - 单击延迟判定窗口，避免和双击冲突
-- emote 数据驱动，睡觉单击只显示 `zzz`
+- emote 逻辑保留为配置开关，当前默认关闭
 - 图片路径和可调参数集中在 `config/defaults.json`
 - 纯 Python 单元测试，不依赖 PySide6
 
