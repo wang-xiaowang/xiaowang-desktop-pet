@@ -29,6 +29,7 @@ xiaowang_desktop_pet/
     defaults.json    # 时长、概率、窗口大小、素材目录等配置
   docs/
     state_diagram.md # 状态转移图草稿
+    action_asset_spec.md # 动作素材绘制说明
   src/xiaowang_pet/
     state_machine.py # 核心状态机
     animations.py    # 帧序列和转场播放
