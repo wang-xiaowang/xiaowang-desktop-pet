@@ -94,6 +94,7 @@ class PetWindow(QWidget):
         self._press_global: QPoint | None = None
         self._drag_offset = QPoint()
         self._dragging = False
+        self._ignore_release_after_double_click = False
 
         self._init_window()
         self._init_timers()
@@ -248,7 +249,9 @@ class PetWindow(QWidget):
             super().mouseReleaseEvent(event)
             return
 
-        if self._dragging:
+        if self._ignore_release_after_double_click:
+            self._ignore_release_after_double_click = False
+        elif self._dragging:
             transition = self.brain.end_drag(now_ms())
             if transition:
                 self._apply_transition(transition)
@@ -263,6 +266,7 @@ class PetWindow(QWidget):
     def mouseDoubleClickEvent(self, event) -> None:  # noqa: N802
         if event.button() == Qt.MouseButton.LeftButton:
             self.single_click_timer.stop()
+            self._ignore_release_after_double_click = True
             transition = self.brain.handle_double_click(now_ms(), self.rng)
             if transition:
                 self._apply_transition(transition)
