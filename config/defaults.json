@@ -1,0 +1,25 @@
+{
+  "initial_anchor": "bottom_right",
+  "temp_quit_key": "Esc",
+  "pet_size": 180,
+  "timing": {
+    "frame_ms": 420,
+    "click_window_ms": 280,
+    "emote_ms": 1200,
+    "inactive_walk_seconds": 45,
+    "sleep_wake_window_ms": 2000,
+    "walk_duration_ms": 6000,
+    "behavior_check_ms": 1000
+  },
+  "movement": {
+    "walk_speed_px": 4,
+    "walk_probability_per_check": 0.06
+  },
+  "activity_weights": {
+    "read": 1.0,
+    "type": 1.0,
+    "ball": 1.0,
+    "sleep": 1.0
+  },
+  "emotes": ["heart", "note", "question", "anger", "sweat"]
+}

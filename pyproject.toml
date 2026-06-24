@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xiaowang-desktop-pet"
+version = "0.1.0"
+description = "桌宠-小旺：A PySide6 desktop pet scaffold for Xiaowang."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "PySide6>=6.7",
+]
+
+[project.scripts]
+xiaowang-pet = "xiaowang_pet.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
