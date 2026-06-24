@@ -68,7 +68,7 @@ python -m pip install -r requirements.txt
 不装 PySide6 也可以先跑：
 
 ```powershell
-cd C:\Users\xiaowang\Documents\Codex\2026-06-24\new-chat\outputs\xiaowang_desktop_pet
+cd C:\Users\xiaowang\Documents\Codex\2026-06-24\new-chat\outputs\桌宠-小旺
 python -m unittest discover -s tests
 ```
 
